@@ -20,11 +20,14 @@ document.getElementById("expense-add-btn").addEventListener("click", () => {
     );
     return;
   }
+  if (Number(amountVal) > Number(totalBalance.innerHTML)) {
+    alert("Enter a valid amount to decrease!");
+    return;
+  }
   addToIncome(typeVal, nameVal, amountVal);
 });
 
 function addToIncome(typeVal, nameVal, amountVal) {
-  const resultCard = document.createElement("div");
   const cardClasses = ["card", "w-full", "py-2", "bg-white", "border", "px-4"];
   const badgeClasses = ["badge", "text-white"];
   if (typeVal === "Income") {
@@ -37,14 +40,12 @@ function addToIncome(typeVal, nameVal, amountVal) {
   } else {
     cardClasses.push("border-secondary", "text-secondary");
     badgeClasses.push("badge-secondary");
-    if (Number(amountVal) > Number(totalBalance.innerHTML)) {
-      alert("Enter a valid amount to decrease!");
-      return;
-    }
+
     addAmount(totalExpense, amountVal);
     minusAmount(totalBalance, amountVal);
   }
   document.querySelector(".no-expense").classList.add("hidden");
+  const resultCard = document.createElement("div");
   resultCard.classList.add(...cardClasses);
   resultCard.innerHTML = `
        <h1 class="flex items-center justify-between"> <span> ${nameVal} <strong>${amountVal}</strong> tk  </span>   <span class="${badgeClasses.join(" ")}">${typeVal}</span> <i class="fas fa-trash cursor-pointer dlt-expense"></i>  </h3>
