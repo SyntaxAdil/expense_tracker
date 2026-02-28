@@ -20,10 +20,7 @@ document.getElementById("expense-add-btn").addEventListener("click", () => {
     );
     return;
   }
-  if (Number(amountVal) > Number(totalBalance.innerHTML)) {
-    alert("Enter a valid amount to decrease!");
-    return;
-  }
+  
   addToIncome(typeVal, nameVal, amountVal);
 });
 
@@ -38,6 +35,10 @@ function addToIncome(typeVal, nameVal, amountVal) {
 
     addAmount(totalBalance, amountVal);
   } else {
+    if (Number(amountVal) > Number(totalBalance.innerHTML)) {
+    alert("Enter a valid amount to decrease!");
+    return;
+  }
     cardClasses.push("border-secondary", "text-secondary");
     badgeClasses.push("badge-secondary");
 
