@@ -37,7 +37,10 @@ function addToIncome(typeVal, nameVal, amountVal) {
   } else {
     cardClasses.push("border-secondary", "text-secondary");
     badgeClasses.push("badge-secondary");
-
+    if (Number(amountVal) > Number(totalBalance.innerHTML)) {
+      alert("Enter a valid amount to decrease!");
+      return;
+    }
     addAmount(totalExpense, amountVal);
     minusAmount(totalBalance, amountVal);
   }
@@ -64,9 +67,5 @@ function addAmount(target, value) {
   target.innerHTML = Number(target.innerHTML) + Number(value);
 }
 function minusAmount(target, value) {
-    if(Number(value)>Number(target.innerHTML)){
-        alert("Enter a valid amount to decrease!")
-        return;
-    }
   target.innerHTML = Number(target.innerHTML) - Number(value);
 }
