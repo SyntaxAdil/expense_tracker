@@ -20,7 +20,6 @@
     />
     <style>
       #expense-result {
-        
         scrollbar-width: none;
         &::-webkit-scrollbar {
           display: none;
@@ -29,12 +28,49 @@
     </style>
   </head>
   <body
-    class="min-h-screen w-full flex items-center gap-10 flex-col p-4 md:flex-row justify-center"
+    class="min-h-screen w-full flex items-center gap-5 flex-col p-8 md:flex-row justify-center"
   >
-    <div class="container max-w-md p-5 md:p-10 shadow-lg rounded-lg">
+    <div
+      class="container max-w-md p-5 md:p-10 shadow-lg rounded-lg min-h-[307px]"
+    >
       <h2 class="text-xl font-semibold">
         Expense <span class="text-purple-600">Tracker</span>
       </h2>
+
+      <div class="my-4 space-y-5">
+        <h3 class="font-semibold text-2xl">
+          Balance:
+          <span class="text-purple-600 font-medium">
+            <span id="total-balance">00</span> </span
+          >BDT
+        </h3>
+        <div class="flex items-center justify-between">
+          <div>
+            Total Income:
+            <span class="block text-xl text-green-600 font-medium">
+              <span><span id="total-income">00</span> </span>BDT</span
+            >
+          </div>
+          <div class="h-12 w-0.5 bg-purple-200"></div>
+          <div>
+            Total Expense:
+            <span
+              class="block text-xl text-red-500 font-medium"
+              
+              ><span id="total-expense">00</span> BDT</span
+            >
+          </div>
+        </div>
+      </div>
+      <p class="pt-6 text-sm text-center text-neutral-400 select-none">
+        &copy; All rigths reserved. Abdur Rahman Adil
+      </p>
+    </div>
+    <div class="container max-w-md p-5 md:p-10 shadow-lg rounded-lg">
+      <h2 class="text-xl font-semibold">
+        Add <span class="text-purple-600">New</span>
+      </h2>
+
       <div class="space-y-2 my-2">
         <input
           type="text"

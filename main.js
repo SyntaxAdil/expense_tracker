@@ -5,6 +5,9 @@ const expenseName = getId("expense-name");
 const expenseAmount = getId("expense-amount");
 const expenseType = getId("expense-type");
 const expenseResult = getId("expense-result");
+const totalIncome = getId("total-income");
+const totalExpense = getId("total-expense");
+const totalBalance = getId("total-balance");
 
 document.getElementById("expense-add-btn").addEventListener("click", () => {
   const nameVal = expenseName.value;
@@ -27,9 +30,16 @@ function addToIncome(typeVal, nameVal, amountVal) {
   if (typeVal === "Income") {
     cardClasses.push("border-purple-500", "text-purple-500");
     badgeClasses.push("bg-purple-500");
+
+    addAmount(totalIncome, amountVal);
+
+    addAmount(totalBalance, amountVal);
   } else {
     cardClasses.push("border-secondary", "text-secondary");
     badgeClasses.push("badge-secondary");
+
+    addAmount(totalExpense, amountVal);
+    minusAmount(totalBalance, amountVal);
   }
   document.querySelector(".no-expense").classList.add("hidden");
   resultCard.classList.add(...cardClasses);
@@ -49,3 +59,14 @@ expenseResult.addEventListener("click", (e) => {
     document.querySelector(".no-expense").classList.remove("hidden");
   }
 });
+
+function addAmount(target, value) {
+  target.innerHTML = Number(target.innerHTML) + Number(value);
+}
+function minusAmount(target, value) {
+    if(Number(value)>Number(target.innerHTML)){
+        alert("Enter a valid amount to decrease!")
+        return;
+    }
+  target.innerHTML = Number(target.innerHTML) - Number(value);
+}
